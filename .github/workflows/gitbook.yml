@@ -1,0 +1,22 @@
+name: Build Website
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build Gitbook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Publish
+        uses: tuliren/publish-gitbook@v1.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
